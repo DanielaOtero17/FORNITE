@@ -15,6 +15,9 @@ public class Player implements Queue_Players {
 		longitud =0;
 	}
 	
+	/**
+	 * metodos
+	 */
 	
 	@Override
 	public int longitud() {
