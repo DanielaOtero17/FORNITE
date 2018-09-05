@@ -16,7 +16,7 @@ public class Player implements Queue_Players {
 	}
 	
 	/**
-	 * metodos
+	 * metodos bjjjjhhghghgh
 	 */
 	
 	@Override
