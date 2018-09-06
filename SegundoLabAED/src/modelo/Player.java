@@ -20,17 +20,17 @@ public class Player implements Queue_Players {
 	 */
 	
 	@Override
-	public int longitud() {
+	public int longitude() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 	@Override
-	public boolean isVAcia() {
+	public boolean isEmpty() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	@Override
-	public void encolar(Object o) {
+	public void enqueue(Object o) {
 		// TODO Auto-generated method stub
 		Player n = new Player();
 		if(longitud==0) {
@@ -40,12 +40,12 @@ public class Player implements Queue_Players {
 		
 	}
 	@Override
-	public Object desencolar() {
+	public Object dequeue() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public Object cabezera() {
+	public Object head() {
 		// TODO Auto-generated method stub
 		return null;
 	}

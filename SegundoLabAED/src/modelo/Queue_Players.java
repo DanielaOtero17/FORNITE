@@ -2,10 +2,10 @@ package modelo;
 
 public interface Queue_Players{
 	
-	public int longitud();
-	public boolean isVAcia();
-    public void encolar(Object o);
-    public Object desencolar();
-    public Object cabezera();
+	public int longitude();
+	public boolean isEmpty();
+    public void enqueue(Object o);
+    public Object dequeue();
+    public Object head();
     
 }
