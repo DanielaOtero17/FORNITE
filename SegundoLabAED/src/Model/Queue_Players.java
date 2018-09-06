@@ -1,4 +1,4 @@
-package modelo;
+package Model;
 
 public interface Queue_Players{
 	
