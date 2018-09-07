@@ -3,7 +3,7 @@ package Model;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-public class Plataform {
+public class Platform {
 	
 	public final static int MAX_CUANTITY= 100;
 
@@ -11,7 +11,7 @@ public class Plataform {
 	private Player end;
 	private int cuantity;
 	
-	public Plataform(int player_cuantity){
+	public Platform(int player_cuantity){
 		
 		players = null;
 		end = null;
@@ -39,11 +39,11 @@ public class Plataform {
 		return players.size();
 	}
 	
-	public void openPlataform(){
+	public void openPlatform(){
 		
 		if(allKeys() <= MAX_CUANTITY){
 				
-				Plataform plataform = new Plataform(allKeys());
+				Platform platform = new Platform(allKeys());
 			}
 			
 		
