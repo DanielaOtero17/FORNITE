@@ -4,25 +4,70 @@ import java.util.Hashtable;
 
 public class Player implements Queue_Players {
 	
+	public class Node{
+		
+		Weapon weap;
+		Node next;
+		
+		public Node(Weapon a){
+			
+			weap = a;
+			next = null;
+		}
+		
+		public Node getNext(){
+			return next;
+		}
+		
+		public void setNext(Node n){
+			
+			next = n;
+		}
+		public Weapon getWeap(){
+			
+			return weap;
+		}
+	}
 	// declaration of variables
 	
 	// player types.
 	private Player head;
 	private Player queue;
+	private Player next;
 	private int size;
+	private Node end;
+	private String key;
+	private String username;
+	private double ping;
+	private int ranking;
 	// declaration of a weapon
 	private Weapon ax;
 	// declaration of a Hash table
 	private Hashtable<String,String> weapons;
 	
 	//Constructor.
-	public Player() {
+	public Player(String k, String u,int rank, double pin) {
 		head =null;
 		queue=null;
+		next = null;
 		size =0;
+		key = k;
+		ping = pin;
+		ranking = rank;
+		username = u;
 		ax = new Weapon("1","ax");
+		end = null;
 		weapons = new Hashtable<String,String>();
 		weapons.put(ax.getKey(), ax.getName());
+	}
+	
+	public Player getNext(){
+		
+		return next;
+	}
+	public void setNext(Player n){
+		
+		next=n;
 	}
 	
 	//Getters and Setters
@@ -50,6 +95,20 @@ public class Player implements Queue_Players {
 	public void setSize(int size) {
 		this.size = size;
 	}
+	public void setRanking(int r) {
+		ranking = r;
+	}
+	public int getRanking() {
+	
+		return ranking;
+	}
+	public void setPing(int size) {
+		this.size = size;
+	}
+	public double getPing(){
+	
+		return ping;
+	}
 
 	public Hashtable<String, String> getWeapons() {
 		return weapons;
@@ -59,6 +118,23 @@ public class Player implements Queue_Players {
 		this.weapons = weapons;
 	}
 
+	public String getKey(){
+		
+		return key;
+	}
+	
+	public void setKey(String n){
+		
+		key = n;
+	}
+	public void setUsername(String n){
+		
+		username = n;
+	}
+	public String getUsername(){
+		
+		return username;
+	}
 	/**
 	 * Methods from interface.
 	 */
@@ -77,11 +153,7 @@ public class Player implements Queue_Players {
 	}
 	@Override
 	public void enqueue(Object o) {
-		// TODO Auto-generated method stub
-		Player n = new Player();
-		if(size==0) {
-			head =n;
-		}
+		
 		
 	}
 	@Override
@@ -97,11 +169,36 @@ public class Player implements Queue_Players {
 	
 	// Functional methods.
 	
-	public void insertWeapon(String a,String b){
+	// insert a Weapon in the hash table.
+	public void insertWeaponHash(String a,String b){
 		
 		weapons.put(a, b);
+		 
+		insertWeaponStack(new Weapon(a,b));
+	}
+	// inset a Weapon in the Stack
+	public void insertWeaponStack(Weapon w){
+		
+		Node node = new Node(w);
+		if(end == null){
+			
+			end = node;
+		}else{
+			
+			node.setNext(end);
+			end = node;
+		}
 	}
 	
+	// Gets the Top object from the stack.
+	public Weapon getTop(){
+		
+		if(end == null){
+			
+			return ax;
+		}
+		return end.getWeap();
+	}
 	
 
 }
