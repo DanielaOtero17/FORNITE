@@ -2,7 +2,7 @@ package Model;
 
 import java.util.Hashtable;
 
-public class Player implements Queue_Players {
+public class Player implements Stack_Players {
 	
 	public class Node{
 		
@@ -155,21 +155,7 @@ public class Player implements Queue_Players {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	@Override
-	public void enqueue(Object o) {
-		
-		
-	}
-	@Override
-	public Object dequeue() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Object head() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	
 	// Functional methods.
 	
@@ -195,6 +181,7 @@ public class Player implements Queue_Players {
 	}
 	
 	// Gets the Top object from the stack.
+	@Override
 	public Weapon getTop(){
 		
 		if(end == null){
@@ -202,6 +189,30 @@ public class Player implements Queue_Players {
 			return ax;
 		}
 		return end.getWeap();
+	}
+
+	@Override
+	public Object getT() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void pileUp() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void search(Object o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remove(Object o) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 
