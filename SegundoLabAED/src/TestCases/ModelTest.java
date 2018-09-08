@@ -7,28 +7,40 @@ import Model.*;
 public class ModelTest {
 
 	private Player player;
-	private Weapon weap;
+	private Weapon[] weap;
+
 	
 	public void allWeapons() {
 		
-		weap = new Weapon("001","AK-47",5);
-		weap = new Weapon("001","Fusil",7);
-		weap = new Weapon("001","Ametralladora",11);
-		weap = new Weapon("001","Escopeta",4);
-		weap = new Weapon("001","Lanzallamas",9);
+		weap = new Weapon[5];
+		weap[0] = new Weapon("AK-47","5");
+		weap[1] = new Weapon("Fusil","7");
+		weap[2] = new Weapon("Ametralladora","11");
+		weap[3] = new Weapon("Escopeta","4");
+		weap[4] = new Weapon("Lanzallamas","9");
 		
 	}
 	
 	public void stageOne(){
 		
-		player = new Player("001","Santiago",12,12354658,"Android");
+		allWeapons();
+		player = new Player("Santiago","2",2.9,"Android");
+		
+		for(int i =0; i<4;i++){
+			
+			player.insertWeaponHash(weap[i].getKey(),weap[i].getBullets());
+		}
 		
 	}
 	@Test
-	public void test() {
+	public void testOne() {
 		
 		allWeapons();
 		stageOne();
+		System.out.println(player.getWeapons());
+		System.out.println("The last weapon is: " + player.getTop().getKey() + " with: " +
+		player.getTop().getBullets() + " bullets.");
+		assertTrue(true);
 		
 	}
 

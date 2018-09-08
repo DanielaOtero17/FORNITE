@@ -33,13 +33,14 @@ public class Player implements Queue_Players {
 	// player types.
 	private Player head;
 	private Player queue;
+	
 	private Player next;
 	private int size;
 	private Node end;
 	private String key;
 	private String username;
 	private double ping;
-	private int ranking;
+	private String ranking;
 	// declaration of a weapon
 	private Weapon ax;
 	// declaration of a Hash table
@@ -47,19 +48,19 @@ public class Player implements Queue_Players {
 	private String platform;
 	
 	//Constructor.
-	public Player(String k, String u,int rank, double pin,String p) {
+	public Player(String u, String rank, double pin,String p) {
 		head =null;
 		queue=null;
 		next = null;
 		size =0;
-		key = k;
+		key = u;
 		ping = pin;
 		ranking = rank;
-		username = u;
-		ax = new Weapon("1","ax",0);
+		
+		ax = new Weapon("ax","0");
 		end = null;
 		weapons = new Hashtable<String,String>();
-		weapons.put(ax.getKey(), ax.getName());
+		weapons.put(ax.getKey(), ax.getBullets());
 		platform = p;
 	}
 	
@@ -97,10 +98,10 @@ public class Player implements Queue_Players {
 	public void setSize(int size) {
 		this.size = size;
 	}
-	public void setRanking(int r) {
+	public void setRanking(String r) {
 		ranking = r;
 	}
-	public int getRanking() {
+	public String getRanking() {
 	
 		return ranking;
 	}
@@ -119,6 +120,7 @@ public class Player implements Queue_Players {
 	public void setWeapons(Hashtable<String, String> weapons) {
 		this.weapons = weapons;
 	}
+	
 
 	public String getKey(){
 		
@@ -172,11 +174,11 @@ public class Player implements Queue_Players {
 	// Functional methods.
 	
 	// insert a Weapon in the hash table.
-	public void insertWeaponHash(String a,String b,int c){
+	public void insertWeaponHash(String a,String b){
 		
 		weapons.put(a, b);
 		 
-		insertWeaponStack(new Weapon(a,b,c));
+		insertWeaponStack(new Weapon(a,b));
 	}
 	// inset a Weapon in the Stack
 	public void insertWeaponStack(Weapon w){
