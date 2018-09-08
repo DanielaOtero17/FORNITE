@@ -26,7 +26,7 @@ public class ModelTest {
 		allWeapons();
 		player = new Player("123","2","Santiago",2.9,"Android");
 		
-		for(int i =0; i<4;i++){
+		for(int i =0; i<weap.length;i++){
 			
 			player.insertWeaponHash(weap[i].getKey(),weap[i].getBullets(),weap[i].getName());
 		}
@@ -43,6 +43,8 @@ public class ModelTest {
 		System.out.println(player.getWeapons());
 		System.out.println("The last weapon is: " + player.getTop().getKey() + " with: " +
 		player.getTop().getBullets() + " bullets.");
+		System.out.println("The last weapon is: " + player.pop().getKey() + " with: " +
+				player.pop().getBullets() + " bullets.");
 		
 		
 		

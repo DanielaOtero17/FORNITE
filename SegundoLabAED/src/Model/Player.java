@@ -202,6 +202,14 @@ public class Player implements Stack_Players<Weapon> {
 		}
 		return end.getWeap();
 	}
+	
+	public Weapon pop() {
+		
+		
+		end = end.getNext();
+		return end.getWeap();
+		
+	}
 
 	@Override
 	public Weapon getT() {
@@ -214,6 +222,17 @@ public class Player implements Stack_Players<Weapon> {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	public void changeWeapon() {
+		
+		if(getTop().getBullets().equalsIgnoreCase("0")) {
+			
+			if(getTop().getName().equalsIgnoreCase("ax")==false) {
+				
+			}
+		}
+	}
 
 	@Override
 	public boolean search(Weapon o) {
@@ -223,21 +242,7 @@ public class Player implements Stack_Players<Weapon> {
 		if(weapons.containsKey(o.getKey())){
 			search = true;
 		}
-		return search;
-	/*	Enumeration e = weapons.keys();
-		Object key;
-		boolean search = false;
-		while(e.hasMoreElements()){
-		
-		key = e.nextElement();
-		
-		if(key.toString().equals(o.getKey())){
-			
-			search = true;
-			return search;
-		}	
-		}*/
-		
+		return search;	
 		
 	}
 
