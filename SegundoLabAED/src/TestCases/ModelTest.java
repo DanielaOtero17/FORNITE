@@ -15,7 +15,7 @@ public class ModelTest {
 		weap = new Weapon[5];
 		weap[0] = new Weapon("AK-47","5");
 		weap[1] = new Weapon("Fusil","7");
-		weap[2] = new Weapon("Ametralladora","11");
+		weap[2] = new Weapon("Escopeta","11");
 		weap[3] = new Weapon("Escopeta","4");
 		weap[4] = new Weapon("Lanzallamas","9");
 		
@@ -40,8 +40,12 @@ public class ModelTest {
 		System.out.println(player.getWeapons());
 		System.out.println("The last weapon is: " + player.getTop().getKey() + " with: " +
 		player.getTop().getBullets() + " bullets.");
+		player.remove(weap[3]);
+		System.out.println(player.getWeapons());
 		assertTrue(true);
 		
 	}
+	
+	
 
 }

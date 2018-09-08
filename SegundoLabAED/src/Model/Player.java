@@ -1,8 +1,9 @@
 package Model;
 
+import java.util.Enumeration;
 import java.util.Hashtable;
 
-public class Player implements Stack_Players {
+public class Player implements Stack_Players<Weapon> {
 	
 	public class Node{
 		
@@ -44,8 +45,10 @@ public class Player implements Stack_Players {
 	// declaration of a weapon
 	private Weapon ax;
 	// declaration of a Hash table
-	private Hashtable<String,String> weapons;
+	
 	private String platform;
+	
+	private Hashtable<String,String> weapons;
 	
 	//Constructor.
 	public Player(String u, String rank, double pin,String p) {
@@ -59,7 +62,7 @@ public class Player implements Stack_Players {
 		
 		ax = new Weapon("ax","0");
 		end = null;
-		weapons = new Hashtable<String,String>();
+		weapons = new Hashtable<String,String>(10);
 		weapons.put(ax.getKey(), ax.getBullets());
 		platform = p;
 	}
@@ -162,11 +165,20 @@ public class Player implements Stack_Players {
 	// insert a Weapon in the hash table.
 	public void insertWeaponHash(String a,String b){
 		
+		
+		if(search(new Weapon(a,b))){
+			
+			// Evitar colisiones.
+			
+			weapons.put(a,b);			
+		}
+		else{
 		weapons.put(a, b);
-		 
+		}
 		insertWeaponStack(new Weapon(a,b));
 	}
-	// inset a Weapon in the Stack
+	
+	// insert a Weapon in the Stack
 	public void insertWeaponStack(Weapon w){
 		
 		Node node = new Node(w);
@@ -192,9 +204,9 @@ public class Player implements Stack_Players {
 	}
 
 	@Override
-	public Object getT() {
+	public Weapon getT() {
 		// TODO Auto-generated method stub
-		return null;
+		return ax;
 	}
 
 	@Override
@@ -204,14 +216,35 @@ public class Player implements Stack_Players {
 	}
 
 	@Override
-	public void search(Object o) {
-		// TODO Auto-generated method stub
+	public boolean search(Weapon o) {
+		
+		boolean search = false;
+		
+		if(weapons.containsKey(o.getKey())){
+			search = true;
+		}
+		return search;
+	/*	Enumeration e = weapons.keys();
+		Object key;
+		boolean search = false;
+		while(e.hasMoreElements()){
+		
+		key = e.nextElement();
+		
+		if(key.toString().equals(o.getKey())){
+			
+			search = true;
+			return search;
+		}	
+		}*/
+		
 		
 	}
 
 	@Override
-	public void remove(Object o) {
-		// TODO Auto-generated method stub
+	public void remove(Weapon o) {
+		
+		weapons.remove(o.getKey());
 		
 	}
 	

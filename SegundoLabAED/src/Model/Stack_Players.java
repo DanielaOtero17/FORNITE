@@ -7,8 +7,9 @@ public interface Stack_Players<T>{
 	public boolean isEmpty();
     public Object getTop();
     public void pileUp();
-    public void search(Object o);
-    public void remove(Object o);
+    public boolean search(T o);
+    public void remove(T o);
+
     
     
     
