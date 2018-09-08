@@ -6,14 +6,16 @@ public class Weapon {
 	private Weapon back;
 	private String key;
 	private String bullets;
+	private String name;
 	
 	// Declaration of Constructor
-	public Weapon(String k, String b) {
+	public Weapon(String k, String b,String name) {
 		
 		next = null;
 		back = null;
 		key = k;
 		bullets = b;
+		this.name = name;
 	}
     // Getters and Setters
 
@@ -24,7 +26,11 @@ public class Weapon {
 	public void setKey(String key) {
 		this.key = key;
 	}
-
+	
+	public String getName() {
+		
+		return name;
+	}
 	public Weapon getNext() {
 		return next;
 	}

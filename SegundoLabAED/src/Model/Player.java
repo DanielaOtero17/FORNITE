@@ -51,16 +51,17 @@ public class Player implements Stack_Players<Weapon> {
 	private Hashtable<String,String> weapons;
 	
 	//Constructor.
-	public Player(String u, String rank, double pin,String p) {
+	public Player(String key, String rank,String name, double pin,String p) {
 		head =null;
 		queue=null;
 		next = null;
 		size =0;
-		key = u;
+		this.key = key;
 		ping = pin;
 		ranking = rank;
+		username = name;
 		
-		ax = new Weapon("ax","0");
+		ax = new Weapon("0","0","ax");
 		end = null;
 		weapons = new Hashtable<String,String>(10);
 		weapons.put(ax.getKey(), ax.getBullets());
@@ -163,19 +164,18 @@ public class Player implements Stack_Players<Weapon> {
 	// Functional methods.
 	
 	// insert a Weapon in the hash table.
-	public void insertWeaponHash(String a,String b){
+	public void insertWeaponHash(String a,String b,String c){
 		
+		Weapon h = new Weapon(a,b,c);
 		
-		if(search(new Weapon(a,b))){
+		while(search(h)){
 			
-			// Evitar colisiones.
-			
-			weapons.put(a,b);			
+			int newKey = Integer.parseInt(h.getKey())+1;
+			h.setKey(Integer.toString(newKey));		
 		}
-		else{
-		weapons.put(a, b);
-		}
-		insertWeaponStack(new Weapon(a,b));
+		weapons.put(h.getKey(), h.getBullets());
+		
+		insertWeaponStack(new Weapon(a,b,c));
 	}
 	
 	// insert a Weapon in the Stack
