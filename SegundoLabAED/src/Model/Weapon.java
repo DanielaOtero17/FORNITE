@@ -7,13 +7,17 @@ public class Weapon {
 	private String key;
 	private String bullets;
 	private String name;
+	private K k;
+	private T t;
 	
 	// Declaration of Constructor
-	public Weapon(String k, String b,String name) {
+	public Weapon(String ke, String b,String name) {
 		
 		next = null;
 		back = null;
-		key = k;
+		key = ke;
+		k = new K(key);
+		t = new T(bullets);
 		bullets = b;
 		this.name = name;
 	}
@@ -55,6 +59,27 @@ public class Weapon {
 		
 		bullets = b;
 	}
+
+	public K getK() {
+		return k;
+	}
+
+	public void setK(K k) {
+		this.k = k;
+	}
+
+	public T getT() {
+		return t;
+	}
+
+	public void setT(T t) {
+		this.t = t;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	
 	
 

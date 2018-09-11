@@ -1,34 +1,8 @@
 package Model;
 
-import java.util.Enumeration;
-import java.util.Hashtable;
-
 public class Player implements Stack_Players<Weapon> {
 	
-	public class Node{
-		
-		Weapon weap;
-		Node next;
-		
-		public Node(Weapon a){
-			
-			weap = a;
-			next = null;
-		}
-		
-		public Node getNext(){
-			return next;
-		}
-		
-		public void setNext(Node n){
-			
-			next = n;
-		}
-		public Weapon getWeap(){
-			
-			return weap;
-		}
-	}
+	
 	// declaration of variables
 	
 	// player types.
@@ -38,33 +12,36 @@ public class Player implements Stack_Players<Weapon> {
 	private Player next;
 	private int size;
 	private Node end;
-	private String key;
 	private String username;
 	private double ping;
-	private String ranking;
 	// declaration of a weapon
 	private Weapon ax;
 	// declaration of a Hash table
 	
 	private String platform;
+	private String ranking;
 	
-	private Hashtable<String,String> weapons;
+	private K key;
+	private T value;
+	private HashTable weapons;
+	private Object ini;
 	
 	//Constructor.
-	public Player(String key, String rank,String name, double pin,String p) {
+	public Player(String k, String rank,String name, double pin,String p) {
 		head =null;
 		queue=null;
 		next = null;
 		size =0;
-		this.key = key;
-		ping = pin;
 		ranking = rank;
+		key = new K(k);
+		value = new T(ranking);
+		ping = pin;
 		username = name;
-		
 		ax = new Weapon("0","0","ax");
+		ini = new Object(ax.getK(),ax.getT());
 		end = null;
-		weapons = new Hashtable<String,String>(10);
-		weapons.put(ax.getKey(), ax.getBullets());
+		weapons = new HashTable(10);
+		weapons.put(ini.getK(), ini.getT());
 		platform = p;
 	}
 	
@@ -117,21 +94,21 @@ public class Player implements Stack_Players<Weapon> {
 		return ping;
 	}
 
-	public Hashtable<String, String> getWeapons() {
+	public HashTable getWeapons() {
 		return weapons;
 	}
 
-	public void setWeapons(Hashtable<String, String> weapons) {
+	public void setWeapons(HashTable weapons) {
 		this.weapons = weapons;
 	}
 	
 
-	public String getKey(){
+	public K getKey(){
 		
 		return key;
 	}
 	
-	public void setKey(String n){
+	public void setKey(K n){
 		
 		key = n;
 	}
@@ -173,7 +150,8 @@ public class Player implements Stack_Players<Weapon> {
 			int newKey = Integer.parseInt(h.getKey())+1;
 			h.setKey(Integer.toString(newKey));		
 		}
-		weapons.put(h.getKey(), h.getBullets());
+	
+		weapons.put(h.getK(), h.getT());
 		
 		insertWeaponStack(new Weapon(a,b,c));
 	}
@@ -205,7 +183,6 @@ public class Player implements Stack_Players<Weapon> {
 	
 	public Weapon pop() {
 		
-		
 		end = end.getNext();
 		return end.getWeap();
 		
@@ -213,8 +190,8 @@ public class Player implements Stack_Players<Weapon> {
 
 	@Override
 	public Weapon getT() {
-		// TODO Auto-generated method stub
-		return ax;
+	
+		return end.getWeap();
 	}
 
 	@Override
@@ -222,36 +199,19 @@ public class Player implements Stack_Players<Weapon> {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	public void changeWeapon() {
-		
-		if(getTop().getBullets().equalsIgnoreCase("0")) {
-			
-			if(getTop().getName().equalsIgnoreCase("ax")==false) {
-				
-			}
-		}
-	}
-
 	@Override
 	public boolean search(Weapon o) {
 		
-		boolean search = false;
-		
-		if(weapons.containsKey(o.getKey())){
-			search = true;
-		}
-		return search;	
+		return weapons.searchKey(o.getK());
 		
 	}
 
 	@Override
 	public void remove(Weapon o) {
 		
-		weapons.remove(o.getKey());
-		
+		weapons.removeKey(o.getK());
 	}
+	
 	
 
 }
