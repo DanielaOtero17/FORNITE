@@ -126,15 +126,25 @@ public class Player implements Stack_Players<Weapon> {
 	
 	@Override
 	public int longitude() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int cant =0;
+		if(head!=null){
+			while(head.next !=null){
+				cant++;
+			}
+		}
+		return cant;
 	}
 	
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		
+		boolean emty= false;
+		if(head ==null){
+			emty=true;
+		}
+		return emty;
 	}
 
 	

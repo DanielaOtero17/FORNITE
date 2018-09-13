@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import Model.*;
 
-public class ModelTest {
+public class ModelTest extends TestCase{
 
 	private Player player;
 	private Weapon[] weap;
@@ -34,7 +34,7 @@ public class ModelTest {
 	}
 	
 	@Test
-	public void testOne() {
+	public void SceneOne() {
 		
 		assertTrue(true);
 		allWeapons();
@@ -46,7 +46,10 @@ public class ModelTest {
 		System.out.println("The last weapon is: " + player.pop().getKey() + " with: " +
 				player.pop().getBullets() + " bullets.");
 		
-		
+	}
+	
+	@Test
+	public void SceneTwo() {
 		
 	}
 	
