@@ -203,12 +203,7 @@ public class Player implements Stack_Players<Weapon> {
 	
 		return end.getWeap();
 	}
-
-	@Override
-	public void pileUp() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	@Override
 	public boolean search(Weapon o) {
 		
@@ -221,7 +216,5 @@ public class Player implements Stack_Players<Weapon> {
 		
 		weapons.removeKey(o.getK());
 	}
-	
-	
 
 }
