@@ -11,6 +11,7 @@ public class ModelTest extends TestCase{
 	private Ranking_Players ranking;
 	private Player player;
 	private Weapon[] weap;
+	
 
 	
 	public void allWeapons() {

@@ -12,6 +12,8 @@ public class Player implements Stack_Players<Weapon> {
 	private Player next;
 	private int size;
 	private Node end;
+	
+
 	private String username;
 	private double ping;
 	// declaration of a weapon
@@ -215,6 +217,14 @@ public class Player implements Stack_Players<Weapon> {
 	public void remove(Weapon o) {
 		
 		weapons.removeKey(o.getK());
+	}
+	
+	public String getPlatform() {
+		return platform;
+	}
+
+	public void setPlatform(String platform) {
+		this.platform = platform;
 	}
 
 }
