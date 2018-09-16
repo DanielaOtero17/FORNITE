@@ -28,23 +28,17 @@ public class HashTable<K,T> implements Map<K,T> {
 	public void removeKey(K o) {
 
 	for(int i=0;i<array.length;i++){
-			
-			if(array[i].getKey()==o){
-				
+			if(array[i].getKey()==o){	
 				array[i]=null;
 				break;
 			}
-		}
-		
-	}
+		}	}
 
 	@Override
 	public void removeValue(T o) {
 		
 		for(int i=0;i<array.length;i++){
-			
-			if(array[i].getValue()==o){
-				
+			if(array[i].getValue()==o){	
 				array[i]=null;
 				break;
 			}
@@ -72,14 +66,28 @@ public class HashTable<K,T> implements Map<K,T> {
 			array = new_array;
 				
 		}			
+		boolean agregado = false;
+		
 		for(int i=0; i<array.length; i++){
+			
+		while(agregado=false){
+			
+			if(array[i].getKey()==null){
+			array[i].setKey(o);
+			array[i].setValue(t);
+			agregado = true;
+		}
+		
+			}
+		}
+		/*for(int i=0; i<array.length; i++){
 				
 				
 			if(array[i].getKey()!= null && array[i].getKey() == o){
 				
 				Node aux = array[i];
 						
-		while(i<array.length && aux.getNext().getKey() !=null){
+		while(i<array.length-1 && aux.getNext().getKey() !=null){
 							
 						aux = array[i].getNext();		
 						i++;
@@ -87,10 +95,25 @@ public class HashTable<K,T> implements Map<K,T> {
 					}						
 						array[i].getNext().setKey(o);
 						array[i].getNext().setValue(t);
-				}
+			}else{
+					
+			if(array[i].getKey()!=null){
 						
-				}
-	}				
+				Node aux = array[i];
+						
+				while(i<array.length-1 && aux.getNext().getKey() !=null){
+							
+				aux = array[i].getNext();		
+					i++;
+								
+				}						
+					array[i].getNext().setKey(o);
+					array[i].getNext().setValue(t);
+					}
+					}
+			}*/
+						
+		}				
 
 	@Override
 	public boolean searchKey(K o) {
@@ -168,7 +191,7 @@ public class HashTable<K,T> implements Map<K,T> {
 		this.tamanio = tamanio;
 	}
 
-	public Object[] getArray() {
+	public Node[] getArray() {
 		return array;
 	}
 

@@ -93,8 +93,14 @@ public class Player implements Stack_Players<Weapon> {
 		return ping;
 	}
 
-	public HashTable getWeapons() {
-		return weapons;
+	public String getWeapons() {
+		
+		String aux = "";
+		for(int i=0; i<weapons.getArray().length; i++){
+			
+			aux += weapons.getArray()[i].getKey() + " " +  weapons.getArray()[i].getKey() + ",";
+		}
+		return aux;
 	}
 
 	public void setWeapons(HashTable weapons) {
