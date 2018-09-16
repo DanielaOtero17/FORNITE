@@ -1,4 +1,4 @@
-package Model;
+package Interface;
 
 public interface Map<K,T> {
 

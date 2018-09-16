@@ -1,21 +1,27 @@
 package Model;
 
 import java.util.*;
+import Interface.Map;
 
-public class HashTable implements Map<K,T> {
+
+
+public class HashTable<K,T> implements Map<K,T> {
 
 	private K key;
 	private T value;
 	private int tamanio;
-	private Object[] array;
+	private Node[] array;
+	private Node next;
 	
-	public HashTable(int tamanio) {
-		super();
-		this.key = null;
-		this.value = null;
-		this.tamanio = tamanio;
-		array = new Object[tamanio];
+	public HashTable(int tam) {
+	
+		tamanio = tam;
+		array = new Node[tamanio];
 		
+		for(int i=0; i<array.length; i++){
+			
+			array[i] = new Node();
+		}
 	}
 
 	@Override
@@ -23,7 +29,7 @@ public class HashTable implements Map<K,T> {
 
 	for(int i=0;i<array.length;i++){
 			
-			if(array[i].getK()==o){
+			if(array[i].getKey()==o){
 				
 				array[i]=null;
 				break;
@@ -37,7 +43,7 @@ public class HashTable implements Map<K,T> {
 		
 		for(int i=0;i<array.length;i++){
 			
-			if(array[i].getT()==o){
+			if(array[i].getValue()==o){
 				
 				array[i]=null;
 				break;
@@ -49,54 +55,64 @@ public class HashTable implements Map<K,T> {
 	@Override
 	public void put(K o, T t) {
 		
-		int counter = 0;
-		Object obj = new Object(o,t);
+		int counter = containsKeys();
 		
-		for(int i=0;i<array.length;i++){
-			// it counts the elements that are stored in the array.
-			while(array[i] != null){
-				counter ++;;
-			}
+		if(isEmpty()){
+			
+			array[0].setKey(o);
+			array[0].setValue(t);
+			
 		}
-		// if the array is 75 percent full.
-		if(counter == array.length*0.75){
+		if(counter>0 && counter == array.length*0.75){
 			// his size is duplicated.
-			Object[] new_array = new Object[array.length*2];
+			Node[] new_array = new Node[array.length*2];
 			// we clone the new array to the initial array.
 			new_array = array.clone();
 			// Now the initial array has a new size.
 			array = new_array;
 				
-		}
-		for(int i=0;i<array.length;i++){
+		}			
+		for(int i=0; i<array.length; i++){
 				
-				while(searchKey(obj.getK())){
-					
-					int a = Integer.parseInt(obj.getK().getKey());
-					String b = Integer.toString(a);
-					K k = new K(b);
-					obj.setK(k);
+				
+			if(array[i].getKey()!= null && array[i].getKey() == o){
+				
+				Node aux = array[i];
+						
+		while(i<array.length && aux.getNext().getKey() !=null){
+							
+						aux = array[i].getNext();		
+						i++;
+							
+					}						
+						array[i].getNext().setKey(o);
+						array[i].getNext().setValue(t);
 				}
-			
-			array[i] = obj;
-		}		
-	}
+						
+				}
+	}				
 
 	@Override
 	public boolean searchKey(K o) {
 		
 		boolean exists = false;
+		int count = 0;
+		int aux = containsKeys();
 		
-		for(int i = 0; i<array.length;i++){
+		if(isEmpty()){
 			
-			if(array[i].getK() == o){
+			return exists;
+		}else{
+		
+			for(int i = 0; i<aux; i++){
 				
-				exists = true;
-				return exists;
+				if(array[i].getKey() == o){
+
+					exists = true;
+				}
 			}
 		}
 		return exists;
-		
 		
 	}
 
@@ -115,7 +131,7 @@ public class HashTable implements Map<K,T> {
 		for(int i=0;i<array.length;i++){
 			
 			// it counts the elements that are stored in the array.
-			while(array[i] != null){
+			while(array[i].getKey() != null){
 				
 				counter ++;;
 			}
@@ -156,8 +172,22 @@ public class HashTable implements Map<K,T> {
 		return array;
 	}
 
-	public void setArray(Object[] array) {
+	public void setArray(Node[] array) {
 		this.array = array;
 	}
 	
+	public int containsKeys(){
+		
+		int counter = 0;
+		
+		for(int i=0;i<array.length;i++){
+			// it counts the elements that are stored in the array.
+			while(array[i].getKey() != null){
+				counter ++;;
+			}
+	}
+		return counter;
+	}			
+			
+			
 }

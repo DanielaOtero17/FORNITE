@@ -1,4 +1,4 @@
-package interfaz;
+package Main;
 
 import Model.Player;
 import Model.Ranking_Players;

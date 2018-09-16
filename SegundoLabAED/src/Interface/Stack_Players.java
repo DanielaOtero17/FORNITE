@@ -1,4 +1,4 @@
-package Model;
+package Interface;
 
 public interface Stack_Players<T>{
 	

@@ -1,5 +1,7 @@
 package Model;
 
+import Interface.Stack_Players;
+
 public class Player implements Stack_Players<Weapon> {
 	
 	
@@ -22,9 +24,7 @@ public class Player implements Stack_Players<Weapon> {
 	
 	private String platform;
 	private String ranking;
-	
-	private K key;
-	private T value;
+
 	private HashTable weapons;
 	private Object ini;
 	
@@ -35,15 +35,12 @@ public class Player implements Stack_Players<Weapon> {
 		next = null;
 		size =0;
 		ranking = rank;
-		key = new K(k);
-		value = new T(ranking);
 		ping = pin;
 		username = name;
 		ax = new Weapon("0","0","ax");
-		ini = new Object(ax.getK(),ax.getT());
 		end = null;
 		weapons = new HashTable(10);
-		weapons.put(ini.getK(), ini.getT());
+		weapons.put(ax.getKey(), ax.getBullets());
 		platform = p;
 	}
 	
@@ -103,17 +100,7 @@ public class Player implements Stack_Players<Weapon> {
 	public void setWeapons(HashTable weapons) {
 		this.weapons = weapons;
 	}
-	
 
-	public K getKey(){
-		
-		return key;
-	}
-	
-	public void setKey(K n){
-		
-		key = n;
-	}
 	public void setUsername(String n){
 		
 		username = n;
@@ -163,7 +150,7 @@ public class Player implements Stack_Players<Weapon> {
 			h.setKey(Integer.toString(newKey));		
 		}
 	
-		weapons.put(h.getK(), h.getT());
+		weapons.put(h.getKey(), h.getBullets());
 		
 		insertWeaponStack(new Weapon(a,b,c));
 	}
@@ -209,14 +196,14 @@ public class Player implements Stack_Players<Weapon> {
 	@Override
 	public boolean search(Weapon o) {
 		
-		return weapons.searchKey(o.getK());
+		return weapons.searchKey(o.getKey());
 		
 	}
 
 	@Override
 	public void remove(Weapon o) {
 		
-		weapons.removeKey(o.getK());
+		weapons.removeKey(o.getKey());
 	}
 	
 	public String getPlatform() {
