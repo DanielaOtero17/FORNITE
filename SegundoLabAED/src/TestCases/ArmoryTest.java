@@ -12,14 +12,14 @@ public class ArmoryTest {
 	private Armory armory;
 	
 
-	public void stage() {
+	public void stage2() {
 		
 		armory = new Armory(); 
 	}
 	
 	@Test
-	public void sceneOne() {
-		stage();
+	public void sceneFour() {
+		stage2();
 		Weapon w1 = new Weapon("100","AK-47");
 		Weapon w2 = new Weapon("150","Minigun");
 		Weapon w3 = new Weapon("250","Pistola");
@@ -38,8 +38,8 @@ public class ArmoryTest {
 	}
 	
 	@Test
-	public void sceneTwo() {
-		stage();
+	public void sceneFive() {
+		stage2();
 		
 		Weapon w1 = new Weapon("0","Hacha");
 		Weapon w2 = new Weapon("150","Minigun");
@@ -56,8 +56,8 @@ public class ArmoryTest {
 	
 	
 	@Test
-	public void sceneThree() {
-		stage();
+	public void sceneSix() {
+		stage2();
 		
 		Weapon w2 = new Weapon("150","Minigun");
 		Weapon w3 = new Weapon("250","Pistola");
@@ -76,8 +76,8 @@ public class ArmoryTest {
 	}
 	
 	@Test
-	public void sceneFour() {
-		stage();
+	public void sceneSeven() {
+		stage2();
 		
 		Weapon w1 = new Weapon("100","AK-47");
 		Weapon w2 = new Weapon("150","Minigun");
