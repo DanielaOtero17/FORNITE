@@ -2,50 +2,34 @@ package Model;
 
 public class Weapon {
 	
-	private Weapon next;
-	private Weapon back;
-	private String key;
+//	private String key;
 	private String bullets;
 	private String name;
+	private Weapon next;
 	
+
 	// Declaration of Constructor
-	public Weapon(String ke, String b,String name) {
+	public Weapon(String b,String name) {
 		
-		next = null;
-		back = null;
-		key = ke;
+//		key = null;
 		bullets = b;
 		this.name = name;
 	}
     // Getters and Setters
 
-	public String getKey() {
-		return key;
-	}
-
-	public void setKey(String key) {
-		this.key = key;
-	}
+//	public String getKey() {
+//		return key;
+//	}
+//
+//	public void setKey(String key) {
+//		this.key = key;
+//	}
 	
 	public String getName() {
 		
 		return name;
 	}
-	public Weapon getNext() {
-		return next;
-	}
-
-	public void setNext(Weapon next) {
-		this.next = next;
-	}
-
-	public Weapon getBack() {
-		return back;
-	}
-
-	public void setBack(Weapon back) {
-		this.back = back;
-	}
+	
 	public String getBullets() {
 		
 		return bullets;
@@ -60,6 +44,13 @@ public class Weapon {
 		this.name = name;
 	}
 	
+	public Weapon getNext() {
+		return next;
+	}
+
+	public void setNext(Weapon next) {
+		this.next = next;
+	}
 	
 	
 

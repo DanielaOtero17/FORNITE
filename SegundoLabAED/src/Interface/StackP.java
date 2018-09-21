@@ -1,19 +1,14 @@
 package Interface;
 
-public interface Stack_Players<T>{
+public interface StackP<T>{
 	
 	public T getT();
 	public int longitude();
 	public boolean isEmpty();
+	public void insertStak(T o);
     public T getTop();
-    public boolean search(T o);
-    public void remove(T o);
-
-    
-    
-    
-    
-    
+    public T search(String o);
+    public boolean remove(String o);
     
     
 }
