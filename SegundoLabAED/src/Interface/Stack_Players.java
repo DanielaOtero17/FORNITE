@@ -7,13 +7,5 @@ public interface Stack_Players<T>{
 	public boolean isEmpty();
     public T getTop();
     public boolean search(T o);
-    public void remove(T o);
-
-    
-    
-    
-    
-    
-    
-    
+    public void remove(T o);  
 }

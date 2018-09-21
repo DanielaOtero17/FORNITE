@@ -80,39 +80,7 @@ public class HashTable<K,T> implements Map<K,T> {
 		
 			}
 		}
-		/*for(int i=0; i<array.length; i++){
-				
-				
-			if(array[i].getKey()!= null && array[i].getKey() == o){
-				
-				Node aux = array[i];
-						
-		while(i<array.length-1 && aux.getNext().getKey() !=null){
-							
-						aux = array[i].getNext();		
-						i++;
-							
-					}						
-						array[i].getNext().setKey(o);
-						array[i].getNext().setValue(t);
-			}else{
-					
-			if(array[i].getKey()!=null){
-						
-				Node aux = array[i];
-						
-				while(i<array.length-1 && aux.getNext().getKey() !=null){
-							
-				aux = array[i].getNext();		
-					i++;
-								
-				}						
-					array[i].getNext().setKey(o);
-					array[i].getNext().setValue(t);
-					}
-					}
-			}*/
-						
+		
 		}				
 
 	@Override
