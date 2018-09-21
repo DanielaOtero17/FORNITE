@@ -34,8 +34,8 @@ public class TestModel {
 		player = new Player("123","2","Santiago",2.9,"Android");
 		
 		for(int i =0; i<weap.length;i++){
-			
-			player.insertWeaponHash(weap[i].getKey(),weap[i].getBullets(),weap[i].getName());
+		
+		player.insertWeaponStack(weap[i]);
 		}
 		
 	}
@@ -44,12 +44,12 @@ public class TestModel {
 	public void stageTwo(){
 		
 		Player p1 = new Player("123","2","Santiago1",2.1,"Android");
-		Player p2 = new Player("124","5","Santiago2",2.8,"Xbox");
-		Player p3 = new Player("125","3","Santiago3",2.7,"IOS");
-		Player p4 = new Player("126","6","Santiago4",2.6,"PSP4");
-		Player p5 = new Player("127","4","Santiago5",2.4,"Android");
-		Player p6 = new Player("128","7","Santiago6",2.2,"Windows");
-		Player p7 = new Player("129","1","Santiago7",2.1,"MacOs");
+		Player p2 = new Player("124","5","Daniela",2.8,"Xbox");
+		Player p3 = new Player("125","3","Jhusseth",2.7,"IOS");
+		Player p4 = new Player("126","6","Sara",2.6,"PSP4");
+		Player p5 = new Player("127","4","Andres",2.4,"Android");
+		Player p6 = new Player("128","7","Camilo",2.2,"Windows");
+		Player p7 = new Player("129","1","Manuel",2.1,"MacOs");
 		
 		ranking.QueueUp(p1);
 		ranking.QueueUp(p2);
@@ -58,32 +58,50 @@ public class TestModel {
 		ranking.QueueUp(p5);
 		ranking.QueueUp(p6);
 		ranking.QueueUp(p7);
+				
 	}
+	
+	
+	public void stageThree(){
+		
+		allWeapons();
+		player = new Player("123","2","Santiago",2.9,"Android");
+		
+		for(int i =0; i<weap.length;i++){
+		
+			player.insertWeaponHash(weap[i].getKey(),weap[i].getBullets(),weap[i].getName());
+		}		
+	}
+	
 	
 	@Test
 	public void SceneOne() {
-		
-		allWeapons();
+
 		stageOne();
-		System.out.println(player.getWeapons());
-		assertTrue(true);
-	//	System.out.println("The last weapon is: " + player.getTop().getKey() + " with: " +
-	//	player.getTop().getBullets() + " bullets.");
-	//	System.out.println("The last weapon is: " + player.pop().getKey() + " with: " +
-	//			player.pop().getBullets() + " bullets.");
+	
+	System.out.println("The last weapon is: " + player.getTop().getName() + " with: " +
+		player.getTop().getBullets() + " bullets.");
+	
+	assertEquals("Lanzallamas",player.getTop().getName());
+		
+	}
+	
+	
+	@Test
+	public void SceneTwo() {
+		
+		stageTwo();
+		
+		System.out.println(ranking.tamanio());
+		assertEquals(7, ranking.tamanio());
 		
 	}
 	
 	@Test
-	public void SceneTwo() {
-		//allWeapons();
-		//stageTwo();
-		assertTrue(true);
-		//assertEquals(7, ranking.tamaño());
-		//System.out.println(ranking.tamaño());
-		
+	public void SceneThree(){
+
+		stageOne();
+		System.out.println(player.getWeapons());
 	}
 	
-	
-
 }

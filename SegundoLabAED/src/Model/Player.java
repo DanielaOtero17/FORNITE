@@ -98,7 +98,7 @@ public class Player implements Stack_Players<Weapon> {
 		String aux = "";
 		for(int i=0; i<weapons.getArray().length; i++){
 			
-			aux += weapons.getArray()[i].getKey() + " " +  weapons.getArray()[i].getKey() + ",";
+			aux += weapons.getArray()[i].getKey() + " " +  weapons.getArray()[i].getWeap() + ",";
 		}
 		return aux;
 	}
@@ -150,6 +150,8 @@ public class Player implements Stack_Players<Weapon> {
 		
 		Weapon h = new Weapon(a,b,c);
 		
+		insertWeaponStack(h);
+		
 		while(search(h)){
 			
 			int newKey = Integer.parseInt(h.getKey())+1;
@@ -158,7 +160,7 @@ public class Player implements Stack_Players<Weapon> {
 	
 		weapons.put(h.getKey(), h.getBullets());
 		
-		insertWeaponStack(new Weapon(a,b,c));
+		
 	}
 	
 	// insert a Weapon in the Stack

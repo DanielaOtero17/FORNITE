@@ -6,14 +6,19 @@ public class Ranking_Players {
 	private int tam;
 	
 	public Ranking_Players(){
+		
 		pointer = null;
 		tam=0;
 	}
 	
-	public Player QueueUp(Player p) {
+	public void QueueUp(Player p) {
+		
 		Player temp = p;
-		if(pointer.getQueue()==null && pointer.getHead()==null){
-			pointer.setHead(p);
+		
+		if(pointer ==null){
+			
+			pointer = p;
+			tam=1;
 		}
 		else{
 			pointer.setNext(temp);
@@ -21,8 +26,8 @@ public class Ranking_Players {
 			tam++;
 		}
 		
-		return p;
 	}
+	
 
 	public Player QueueDown() {
 		
@@ -41,8 +46,8 @@ public class Ranking_Players {
 		return temp;
 	}
 	
-	public int tamaño(){
-	tam = pointer.longitude();
+	public int tamanio(){
+	
 		return tam;
 	}
 	
