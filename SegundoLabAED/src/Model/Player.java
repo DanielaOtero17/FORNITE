@@ -1,225 +1,69 @@
 package Model;
 
-import Interface.Stack_Players;
-
-public class Player implements Stack_Players<Weapon> {
-	
-	
-	// declaration of variables
-	
-	// player types.
-	private Player head;
-	private Player queue;
+public class Player {
 	
 	private Player next;
-	private int size;
-	private Node end;
 	
-
-	private String username;
-	private double ping;
-	// declaration of a weapon
-	private Weapon ax;
-	// declaration of a Hash table
+	private String name;
+	private String ping;
 	
 	private String platform;
-	private String ranking;
-
-	private HashTable weapons;
-	private Object ini;
 	
-	//Constructor.
-	public Player(String k, String rank,String name, double pin,String p) {
-		head =null;
-		queue=null;
-		next = null;
-		size =0;
-		ranking = rank;
-		ping = pin;
-		username = name;
-		ax = new Weapon("0","0","ax");
-		end = null;
-		weapons = new HashTable(10);
-		weapons.put(ax.getKey(), ax.getBullets());
-		platform = p;
+	private int level;
+
+
+	public Player(String nombre, String ping, String platform,int level) {
+		this.next = null;
+		this.name = nombre;
+		this.ping = ping;
+		this.platform = platform;
 	}
 	
-	public Player getNext(){
-		
+	
+	public Player getNext() {
 		return next;
 	}
-	public void setNext(Player n){
-		
-		next=n;
-	}
-	
-	//Getters and Setters
-	
-	public Player getHead() {
-		return head;
+
+	public void setNext(Player next) {
+		this.next = next;
 	}
 
-	public void setHead(Player head) {
-		this.head = head;
-	}
-
-	public Player getQueue() {
-		return queue;
-	}
-
-	public void setQueue(Player queue) {
-		this.queue = queue;
-	}
-
-	public int getSize() {
-		return size;
-	}
-
-	public void setSize(int size) {
-		this.size = size;
-	}
-	public void setRanking(String r) {
-		ranking = r;
-	}
-	public String getRanking() {
-	
-		return ranking;
-	}
-	public void setPing(int size) {
-		this.size = size;
-	}
-	public double getPing(){
-	
+	public String getPing() {
 		return ping;
 	}
 
-	public String getWeapons() {
-		
-		String aux = "";
-		for(int i=0; i<weapons.getArray().length; i++){
-			
-			aux += weapons.getArray()[i].getKey() + " " +  weapons.getArray()[i].getWeap() + ",";
-		}
-		return aux;
+	public void setPing(String ping) {
+		this.ping = ping;
+	}
+	
+	public String getName() {
+		return name;
 	}
 
-	public void setWeapons(HashTable weapons) {
-		this.weapons = weapons;
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setUsername(String n){
-		
-		username = n;
-	}
-	public String getUsername(){
-		
-		return username;
-	}
-	/**
-	 * Methods from interface.
-	 */
-	
-	@Override
-	public int longitude() {
-		
-		int cant =0;
-		if(head!=null){
-			while(head.next !=null){
-				cant++;
-			}
-		}
-		return cant;
-	}
-	
 
-	@Override
-	public boolean isEmpty() {
-		
-		boolean emty= false;
-		if(head ==null){
-			emty=true;
-		}
-		return emty;
-	}
-
-	
-	// Functional methods.
-	
-	// insert a Weapon in the hash table.
-	public void insertWeaponHash(String a,String b,String c){
-		
-		Weapon h = new Weapon(a,b,c);
-		
-		insertWeaponStack(h);
-		
-		while(search(h)){
-			
-			int newKey = Integer.parseInt(h.getKey())+1;
-			h.setKey(Integer.toString(newKey));		
-		}
-	
-		weapons.put(h.getKey(), h.getBullets());
-		
-		
-	}
-	
-	// insert a Weapon in the Stack
-	public void insertWeaponStack(Weapon w){
-		
-		Node node = new Node(w);
-		if(end == null){
-			
-			end = node;
-		}else{
-			
-			node.setNext(end);
-			end = node;
-		}
-	}
-	
-	// Gets the Top object from the stack.
-	@Override
-	public Weapon getTop(){
-		
-		if(end == null){
-			
-			return ax;
-		}
-		return end.getWeap();
-	}
-	
-	public Weapon pop() {
-		
-		end = end.getNext();
-		return end.getWeap();
-		
-	}
-
-	@Override
-	public Weapon getT() {
-	
-		return end.getWeap();
-	}
-	
-	@Override
-	public boolean search(Weapon o) {
-		
-		return weapons.searchKey(o.getKey());
-		
-	}
-
-	@Override
-	public void remove(Weapon o) {
-		
-		weapons.removeKey(o.getKey());
-	}
-	
 	public String getPlatform() {
 		return platform;
 	}
 
+
 	public void setPlatform(String platform) {
 		this.platform = platform;
 	}
+
+
+	public int getLevel() {
+		return level;
+	}
+
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	
 
 }
